@@ -26,6 +26,8 @@ func (c *NotifyController) URLMapping() {
 // @router /onPublish [post]
 func (c *NotifyController) OnPublish() {
 	fmt.Println("OnPublish")
+	fmt.Println("name = ", c.GetString("name"))
+	fmt.Println("request body : ", string(c.Ctx.Input.RequestBody))
 }
 
 
@@ -37,8 +39,6 @@ func (c *NotifyController) OnPublish() {
 // @router /onPublishDone [post]
 func (c *NotifyController) OnPublishDone() {
 	fmt.Println("OnPublishDone")
-	fmt.Println("name = ", c.GetString("name"))
-	fmt.Println("request body : ", string(c.Ctx.Input.RequestBody))
 }
 
 
