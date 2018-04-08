@@ -37,8 +37,8 @@ func (c *NotifyController) OnPublish() {
 // @router /onPublishDone [post]
 func (c *NotifyController) OnPublishDone() {
 	fmt.Println("OnPublishDone")
-	fmt.Println(c.GetString("name"))
-	fmt.Println(string(c.Ctx.Input.RequestBody))
+	fmt.Println("name = ", c.GetString("name"))
+	fmt.Println("request body : ", string(c.Ctx.Input.RequestBody))
 }
 
 
