@@ -23,7 +23,7 @@ func (c *NotifyController) URLMapping() {
 // @Description up voice to server,chnage to text
 // @Success 200 {object} models.Talk
 // @Failure 403 :id is empty
-// @router /onPublish [get]
+// @router /onPublish [post]
 func (c *NotifyController) OnPublish() {
 	fmt.Println("OnPublish")
 }
@@ -34,7 +34,7 @@ func (c *NotifyController) OnPublish() {
 // @Description up voice to server,chnage to text
 // @Success 200 {object} models.Talk
 // @Failure 403 :id is empty
-// @router /onPublishDone [get]
+// @router /onPublishDone [post]
 func (c *NotifyController) OnPublishDone() {
 	fmt.Println("OnPublishDone")
 }
@@ -45,7 +45,7 @@ func (c *NotifyController) OnPublishDone() {
 // @Description up voice to server,chnage to text
 // @Success 200 {object} models.Talk
 // @Failure 403 :id is empty
-// @router /OnPlay [get]
+// @router /OnPlay [post]
 func (c *NotifyController) OnPlay() {
 	fmt.Println("OnPlay")
 }
@@ -55,7 +55,7 @@ func (c *NotifyController) OnPlay() {
 // @Description up voice to server,chnage to text
 // @Success 200 {object} models.Talk
 // @Failure 403 :id is empty
-// @router /OnPlayDone [get]
+// @router /OnPlayDone [post]
 func (c *NotifyController) OnPlayDone() {
 	fmt.Println("OnPlayDone")
 }
