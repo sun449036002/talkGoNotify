@@ -31,31 +31,34 @@ func (c *NotifyController) OnPublish() {
 	roomName := c.GetString("name")
 	tCurl := c.GetString("tcurl")
 
-	//cmd := exec.Command("ffmpeg", " -i " + tCurl + "/" + roomName ,  "-f image2",  "-ss 5", "-vframes 1",  "-s 220*220",  "/root/go/src/talkGo/static/hlsCover/" + roomName + "_cover.png")
-	cmd := exec.Command("ffmpeg", "-i", tCurl + "/" + roomName ,  "-f",  "image2",  "-ss" , "5", "-vframes",  "1",  "-s",  "220*220",  "/root/go/src/talkGo/static/hlsCover/" + roomName + "_cover.png")
-	stdout, err := cmd.StdoutPipe()
-	var stderr bytes.Buffer
-	cmd.Stderr = &stderr
-	if err != nil {
-		fmt.Printf("Error:can not obtain stdout pipe for command:%s\n", err)
-		return
-	}
-	//执行命令
-	if err := cmd.Start(); err != nil {
-		fmt.Println("Error:The command is err,", err)
-		return
-	}
-	//读取所有输出
-	bytes, err := ioutil.ReadAll(stdout)
-	if err != nil {
-		fmt.Println("ReadAll Stdout:", err.Error())
-		return
-	}
-	if err := cmd.Wait(); err != nil {
-		fmt.Println("wait:", err.Error(), stderr.String())
-		return
-	}
-	fmt.Printf("stdout:\n\n %s", bytes)
+	go func(roomName string, tCurl string) {
+		//cmd := exec.Command("ffmpeg", " -i " + tCurl + "/" + roomName ,  "-f image2",  "-ss 5", "-vframes 1",  "-s 220*220",  "/root/go/src/talkGo/static/hlsCover/" + roomName + "_cover.png")
+		cmd := exec.Command("ffmpeg", "-i", tCurl + "/" + roomName ,  "-f",  "image2",  "-ss" , "5", "-vframes",  "1",  "-s",  "220*220",  "/root/go/src/talkGo/static/hlsCover/" + roomName + "_cover.png")
+		stdout, err := cmd.StdoutPipe()
+		var stderr bytes.Buffer
+		cmd.Stderr = &stderr
+		if err != nil {
+			fmt.Printf("Error:can not obtain stdout pipe for command:%s\n", err)
+			return
+		}
+		//执行命令
+		if err := cmd.Start(); err != nil {
+			fmt.Println("Error:The command is err,", err)
+			return
+		}
+		//读取所有输出
+		bytes, err := ioutil.ReadAll(stdout)
+		if err != nil {
+			fmt.Println("ReadAll Stdout:", err.Error())
+			return
+		}
+		if err := cmd.Wait(); err != nil {
+			fmt.Println("wait:", err.Error(), stderr.String())
+			return
+		}
+		fmt.Printf("stdout:\n\n %s", bytes)
+	}(roomName, tCurl)
+	fmt.Println("ok")
 }
 
 
