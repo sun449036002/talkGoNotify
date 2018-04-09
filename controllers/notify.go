@@ -47,7 +47,7 @@ func (c *NotifyController) OnPublish() {
 			return
 		}
 		//读取所有输出
-		bytes, err := ioutil.ReadAll(stdout)
+		bts, err := ioutil.ReadAll(stdout)
 		if err != nil {
 			fmt.Println("ReadAll Stdout:", err.Error())
 			return
@@ -56,7 +56,7 @@ func (c *NotifyController) OnPublish() {
 			fmt.Println("wait:", err.Error(), stderr.String())
 			return
 		}
-		fmt.Printf("stdout:\n\n %s", bytes)
+		fmt.Printf("stdout:\n\n %s", bts)
 	}(roomName, tCurl)
 	fmt.Println("ok")
 }
