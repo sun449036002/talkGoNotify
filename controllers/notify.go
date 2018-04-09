@@ -31,7 +31,6 @@ func (c *NotifyController) OnPublish() {
 	roomName := c.GetString("name")
 	tCurl := c.GetString("tcurl")
 
-	fmt.Println("Cmding..............");
 	//cmd := exec.Command("ffmpeg", " -i " + tCurl + "/" + roomName ,  "-f image2",  "-ss 5", "-vframes 1",  "-s 220*220",  "/root/go/src/talkGo/static/hlsCover/" + roomName + "_cover.png")
 	cmd := exec.Command("ffmpeg", "-i", tCurl + "/" + roomName ,  "-f",  "image2",  "-ss" , "5", "-vframes",  "1",  "-s",  "220*220",  "/root/go/src/talkGo/static/hlsCover/" + roomName + "_cover.png")
 	stdout, err := cmd.StdoutPipe()
