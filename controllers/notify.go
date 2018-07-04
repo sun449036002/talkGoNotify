@@ -6,6 +6,7 @@ import (
 	"os/exec"
 	"io/ioutil"
 	"bytes"
+	"strings"
 )
 
 type NotifyController struct {
