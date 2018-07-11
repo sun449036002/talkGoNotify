@@ -33,6 +33,7 @@ func (c *NotifyController) OnPublish() {
 
 	go func(roomName string, tCurl string) {
 		//cmd := exec.Command("ffmpeg", " -i " + tCurl + "/" + roomName ,  "-f image2",  "-ss 5", "-vframes 1",  "-s 220*220",  "/root/go/src/talkGo/static/hlsCover/" + roomName + "_cover.png")
+		fmt.Printf("ffmpeg", " -i ", tCurl + "/" + roomName ,  " -f ",  "image2",  " -ss " , "5", " -vframes ",  "1",  " -s ",  "220*220",  " /root/go/src/talkGo/static/hlsCover/" + roomName + "_cover.png");
 		cmd := exec.Command("ffmpeg", "-i", tCurl + "/" + roomName ,  "-f",  "image2",  "-ss" , "5", "-vframes",  "1",  "-s",  "220*220",  "/root/go/src/talkGo/static/hlsCover/" + roomName + "_cover.png")
 		stdout, err := cmd.StdoutPipe()
 		var stderr bytes.Buffer
